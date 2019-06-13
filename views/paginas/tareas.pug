@@ -11,7 +11,20 @@ block MasterPage
             .campo.enviar
                 input.boton.nueva-tarea(type="submit" value="Agregar")
 
-        //TODO - Listado de pendientes
+        .listado-pendientes
+            ul
+                if tareas.length
+                    each val in tareas
+                        li.tarea
+                            p=val.tarea
+                            .acciones
+                                if(val.estado)
+                                    i.far.fa-check-circle.completo
+                                else
+                                    i.far.fa-check-circle
+                                i.fas.fa-trash
+                else
+                    p No hay tareas en este proyecto
 
         //- pre= vardump(tareas)
 
