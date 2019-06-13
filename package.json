@@ -1,0 +1,33 @@
+{
+  "name": "uptasknode",
+  "version": "1.0.0",
+  "description": "Proyecto UpTask con Node y MVC",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./index.js",
+    "start": "concurrently \"npm run dev\" \"npm run watch\" ",
+    "watch": "webpack --w --mode development"
+  },
+  "author": "Job Yoshua Zea Guizado",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "concurrently": "^4.1.0",
+    "express": "^4.17.1",
+    "express-validator": "^5.3.1",
+    "mysql2": "^1.6.5",
+    "pug": "^2.0.3",
+    "sequelize": "^5.8.7",
+    "shortid": "^2.2.14",
+    "slug": "^1.1.0",
+    "sweetalert2": "^8.12.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-loader": "^8.0.6",
+    "nodemon": "^1.19.1",
+    "webpack": "^4.33.0",
+    "webpack-cli": "^3.3.4"
+  }
+}
