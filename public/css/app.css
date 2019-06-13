@@ -81,7 +81,7 @@ body {
     font-weight: 900;
     width: 250px;
     margin:0  auto;
-
+    border-radius: 25px;
     display: flex;
     align-items: center;
     line-height: 0;
@@ -201,6 +201,7 @@ body.index {
     padding: 2rem;
     color: white;
     transition: background-color .5s ease-in-out;
+    border-radius: 10px;
 }
 
 /** Listado Pendientes **/
@@ -211,6 +212,7 @@ body.index {
     margin: 2rem auto 0 auto;
     padding: 2rem;
     border: 1px solid #999;
+    border-radius: 10px;
 }
 .listado-pendientes ul {
     padding: 0;
@@ -289,6 +291,7 @@ form.agregar-proyecto {
     padding: 2rem;
     color: white;
     transition: background-color .5s ease-in-out;
+    border-radius: 10px;
 }
 form.agregar-proyecto label,
 form.agregar-proyecto input {
