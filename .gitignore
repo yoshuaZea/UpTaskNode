@@ -1,2 +1,4 @@
 #Omitir las rutas
 /node_modules
+/config
+package-lock.json
