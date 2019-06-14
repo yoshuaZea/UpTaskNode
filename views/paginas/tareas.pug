@@ -15,7 +15,7 @@ block MasterPage
             ul
                 if tareas.length
                     each val in tareas
-                        li.tarea
+                        li.tarea(data-tarea=val.id)
                             p=val.tarea
                             .acciones
                                 if(val.estado)

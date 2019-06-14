@@ -45,5 +45,11 @@ module.exports = function(){
     //Rutas para TAREAS
     router.post('/proyectos/:url', tareasController.agregarTarea);
 
+    //Actualizar tarea - PATCH similar a Update, cambia una porción del objeto
+    router.patch('/tareas/:id', tareasController.cambiarEstadoTarea);
+
+    //Eliminando tarea
+    router.delete('/tareas/:id', tareasController.eliminarTarea);
+
     return router;
 }
