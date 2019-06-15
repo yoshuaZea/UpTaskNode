@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+html(lang="es")
+    head
+        include ../partials/header
+    body.login
+        .contenedor-formulario
+            h1 Iniciar sesión en UpTask
+
+            if error
+                p.alerta.error= error
+
+            form#formulario.caja.caja-login(action="/iniciar-sesion" method="post")
+                .campo
+                    label(for="email") E-mail:
+                    input(type="email" name="email" placeholder="Correo electrónico" value= email)
+                .campo
+                    label(for="password") Password:
+                    input(type="password" name="password" placeholder="Tu contraseña" value= password)
+                .campo.enviar
+                    input.boton(type="submit" value="Iniciar sesión")
+                .campo
+                    a.enlace(onClick="location.href='/crear-cuenta'") ¿Aún no tienes cuenta? Crea una gratis

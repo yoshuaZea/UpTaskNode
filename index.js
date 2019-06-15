@@ -3,6 +3,11 @@ const express = require('express');
 const routes = require('./routes');
 const path = require('path');
 const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
+const flash = require('connect-flash');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const passport = require('./config/passport');
 
 //Helpers funciones propias
 const helpers = require('./helpers');
@@ -13,6 +18,7 @@ const db = require('./config/db');
 //Importar modelos
 require('./models/Proyectos');
 require('./models/Tareas');
+require('./models/Usuarios');
 
 //Validar la conexión a la DB
 db.authenticate()
@@ -33,18 +39,38 @@ app.use(express.static('public'));
 //Habilitar PUG - Template Engine
 app.set('view engine', 'pug');
 
+//Habilitar bodyParser para leer datos del formulario
+app.use(bodyParser.urlencoded({extended: true}));
+
+//Agregamos express Validator a toda la aplicación
+app.use(expressValidator());
+
 //Añadir la carpeta de las vistas
 app.set('views', path.join(__dirname, './views'));
+
+//Agregar flash messages para mostrar mensajes bajo ciertas condiciones
+app.use(flash());
+
+//Agregar la cookie
+app.use(cookieParser());
+
+//Sessiones nos permiten navegar entre las distintas paginas sin volver a autenticar
+app.use(session({
+    secret: 'supersecreto',
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Pasar vardump mediante un middleware
 app.use((req, res, next) => {
     //Forma  de crear variables para todos los archivos del proyecto
     res.locals.vardump = helpers.vardump;
+    res.locals.mensajes = req.flash();
     next();
 });
-
-//Habilitar bodyParser para leer datos del formulario
-app.use(bodyParser.urlencoded({extended: true}));
 
 //Mapear las rutas definidas
 app.use('/', routes());

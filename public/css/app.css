@@ -341,3 +341,10 @@ form input[type="submit"]{
     text-align: center;
     display: block;
 }
+
+a.enlace{
+    color: cadetblue;
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+}
