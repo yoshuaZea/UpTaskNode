@@ -33,7 +33,10 @@ const Usuarios = db.define('usuarios', {
                 msg: 'El password no puede ser vacío'
             }
         }
-    }
+    },
+    token: Sequelize.STRING,
+    expiracion: Sequelize.DATE
+
 }, {
     hooks:{
         beforeCreate(usuario){
@@ -52,6 +55,6 @@ Usuarios.prototype.verificarPassword = function(password){
 }
 
 //Relación con tablas
-// Usuarios.hasMany(Proyectos);
+Usuarios.hasMany(Proyectos);
 
 module.exports = Usuarios;
