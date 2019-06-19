@@ -19,21 +19,37 @@ let transport = nodemailer.createTransport({
     }
 });
 
-// Opciones del correo
-let mailOptions = {
-    from: '"UpTask" <no-reply@uptask.com>', 
-    to: "correo@correo.com", 
-    subject: "Password Reset", 
-    text: "Hola", 
-    html: "<b>Hola</b>"
-};
+//Generar HTML
+const generarHTML = (archivo, opciones = {}) => {
+  const html = pug.renderFile(`${__dirname}/../views/emails/${archivo}.pug`, opciones);
+  return juice(html);
+}
 
-//Ejecutar envío
-transport.sendMail(mailOptions, function(error, info){
-  if(error){
-    return console.log("Fail: " + error);
-  }
-  console.log('Message sent: ' + info.response);
-});
+
+exports.enviar = async (opciones) => {
+  const html = generarHTML(opciones.archivo, opciones);
+  const text = htmlToText.fromString(html);
+  
+  // Opciones del correo
+  let mailOptions = {
+      from: '"UpTask" <no-reply@uptask.com>', 
+      to: opciones.usuario.email, 
+      subject: opciones.subject, 
+      text,
+      html
+  };
+
+  const enviarEmail = util.promisify(transport.sendMail, transport);
+  return enviarEmail.call(transport, mailOptions);
+  
+}
+
+//Ejecutar envío - Test Plantillas
+// transport.sendMail(mailOptions, function(error, info){
+//   if(error){
+//     return console.log("Fail: " + error);
+//   }
+//   console.log('Message sent: ' + info.response);
+// });
 
   
