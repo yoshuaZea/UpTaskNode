@@ -78,12 +78,13 @@ exports.validarToken = async (req, res) => {
 exports.actualizarPassword = async (req, res) => {
     // console.log(req.params.token); //Imprimir variables por URL
 
+    let fecha_actual = Date.now();
     //Verifica token valido y fecha de expiración
     const usuario = await Usuarios.findOne({
         where: {
             token: req.params.token,
             expiracion: {
-                [Op.gte]: Date.now()
+                [Op.gte]: fecha_actual
             }
         }
     });

@@ -80,3 +80,4 @@ app.use('/', routes());
 //Método para configurar el puerto
 app.listen(3000);
 
+require('./handlers/email2');

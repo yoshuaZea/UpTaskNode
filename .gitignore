@@ -1,4 +1,4 @@
 #Omitir las rutas
 /node_modules
-/config
+/config/db.js
 package-lock.json
