@@ -9,6 +9,7 @@ const Tareas = db.define('tareas', {
         autoIncrement: true
     },
     tarea: Sequelize.STRING(100),
+    fecha_inicio: Sequelize.DATEONLY,
     estado: Sequelize.INTEGER(1)
 });
 //Crear la llave foránea

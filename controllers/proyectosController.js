@@ -88,7 +88,7 @@ exports.proyectoPorUrl = async (req, res) => {
         include: [
             { model: Proyectos}
         ]
-    })
+    });
 
     //Validar si existen datos
     if(!proyecto) return next();

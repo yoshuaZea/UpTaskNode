@@ -8,6 +8,9 @@ block MasterPage
             .campo
                 label(for="tarea") Tarea:
                 input.nombre-tarea(type="text" name="tarea" placeholder="Nombre de la tarea")
+            .campo
+                label(for="tarea") Fecha:
+                input.nombre-tarea(type="date" name="fecha_inicio" placeholder="Selecciona una fecha")
             .campo.enviar
                 input.boton.nueva-tarea(type="submit" value="Agregar")
 
@@ -16,7 +19,9 @@ block MasterPage
                 if tareas.length
                     each val in tareas
                         li.tarea(data-tarea=val.id)
-                            p=val.tarea
+                            p=val.tarea 
+                            p=formatearFecha(val.fecha_inicio)
+                            p=in_array(val.id,tareas)
                             .acciones
                                 if(val.estado)
                                     i.far.fa-check-circle.completo

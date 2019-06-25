@@ -54,6 +54,7 @@ body {
     text-align: right;
     padding-right: 1rem;
 }
+.campo input[type="date"],
 .campo input[type="email"],
 .campo input[type="text"],
 .campo input[type="password"] {

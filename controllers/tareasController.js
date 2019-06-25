@@ -10,17 +10,18 @@ exports.agregarTarea = async (req, res, next) => {
     });
 
     // console.log(proyecto);
-    // console.log(req.body);
-
+    // console.log(req.body); //Viene del form
+    // console.log(req.params); //Viene de la url
+    
     //Leer valor del input 
-    const { tarea } = req.body;
+    const { tarea, fecha_inicio } = req.body;
     
     //Variables para insertar
     const estado = 0; //Estado incompleto
     const proyectoId = proyecto.id; //Nombre igual como está en la tabla
 
     //Insertar en la base de datos 
-    const resultado = await Tareas.create({ tarea, estado, proyectoId });
+    const resultado = await Tareas.create({ tarea, fecha_inicio, estado, proyectoId });
 
     //Si falla o no hay respuesta
     if(!resultado)

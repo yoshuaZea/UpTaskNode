@@ -68,6 +68,8 @@ app.use(passport.session());
 app.use((req, res, next) => {
     //Forma  de crear variables para todos los archivos del proyecto
     res.locals.vardump = helpers.vardump;
+    res.locals.formatearFecha = helpers.formatearFecha;
+    res.locals.in_array = helpers.in_array;
     res.locals.mensajes = req.flash();
     //Definir variable de sesión
     res.locals.usuario = {...req.user} || null; //(express operator)... crea una copia de una variable
