@@ -9,6 +9,9 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const passport = require('./config/passport');
 
+//Importart variables de entorno
+require('dotenv').config({ path: 'variables.env' });
+
 //Helpers funciones propias
 const helpers = require('./helpers');
 
@@ -80,7 +83,17 @@ app.use((req, res, next) => {
 app.use('/', routes());
 
 //Método para configurar el puerto
-app.listen(3000);
+// app.listen(3000);
+
 
 //Probar plantillas de correo
 // require('./handlers/email');
+
+
+//SERVIDOR Y PUERTO PARA HEROKU
+const host = process.env.HOST || '0.0.0.0';
+const port = process.env.PORT || 3000;
+
+app.listen(port, host, () => {
+    console.log('El servidor está funcionando correctamente');
+}); 

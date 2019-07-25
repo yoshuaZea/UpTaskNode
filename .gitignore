@@ -1,4 +1,7 @@
 #Omitir las rutas
 /node_modules
-/config/db.js
+# /config/db.js
 package-lock.json
+
+#Omitir variables de entorno
+variables.env
